@@ -1,5 +1,5 @@
 from application import app, db
-from flask import render_template, request
+from flask import redirect, render_template, request, url_for
 from application.tasks.models import Task
 
 @app.route("/tasks", methods=["GET"])
@@ -10,7 +10,10 @@ def tasks_index():
 def tasks_set_done(task_id):
 
     t = Task.query.get(task_id)
-    t.done = True
+    if t.done == False:
+        t.done = True
+    else:
+        t.done = False
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
