@@ -10,10 +10,10 @@ def tasks_index():
 def tasks_set_done(task_id):
 
     t = Task.query.get(task_id)
-    if t.done == False:
-        t.done = True
-    else:
+    if t.done:
         t.done = False
+    else:
+        t.done = True
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
