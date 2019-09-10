@@ -6,6 +6,11 @@ from application.tasks.models import Task
 def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.all())
 
+@app.route("/task/<task_id>", methods=["GET"])
+def get_task(task_id):
+    return render_template("tasks/task.html", task = Task.query.get(task_id))
+
+
 @app.route("/tasks/<task_id>/", methods=["POST"])
 def tasks_set_done(task_id):
 
@@ -25,7 +30,8 @@ def tasks_form():
 
 @app.route("/tasks/", methods=["POST"])
 def tasks_create():
-    t = Task(request.form.get("name"))
+    t = Task(request.form.get("name"), request.form.get("description"))
+
     db.session().add(t)
     db.session().commit()
 

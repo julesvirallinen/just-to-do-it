@@ -9,7 +9,7 @@
     </tr>
     {% for task in tasks %}
     <tr>
-      <td>{{ task.name }}</td>
+      <td><a href="/task/{{task.id}}">{{ task.name }}</a></td>
       <td>{% if task.done %}☑{% else %}◻{% endif %}
 </td>
       <td>
