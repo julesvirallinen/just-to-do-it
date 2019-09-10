@@ -1,4 +1,9 @@
-# Unipäiväkirja
-Kurssille tietokantasovellus.
+# Yksinkertainen TO-DO verkkosovellus
 
-Yksinkertainen sovellus, johon käyttäjä voi lisätä näkemiänsä unia. Unelle voi asettaa tunnetason (hyvä uni - painajainen), sitä voi kuvailla ja sille voi lisätä tunnisteita. Käyttäjä voi selata uniaan päivämäärän tai tunnisteiden kautta, sekä katsoa tilastoja tunnisteista ja unien hyvyydestä. 
+Yksinkertainen TO-DO sovellus, jossa tehtäville voi asettaa ennakkoehtotehtäviä. Näin käyttäjä voi lisätä kokonaisen projektin työkaluun, jolloin työkalu kertoo jokaisella hetkellä mahdolliset tehtävät.
+
+Tehtävä voi luoda kategorioita ja liittää tehtävät niihin. Tehtävät ovat pääosin yhdellä sivulla, mutta käyttäjä voi halutessaan filtteröidä tehtävät yhden tai useamman kategorian tai esimerkiksi deadlinen mukaan.
+
+## Dokumentaatio
+* [Tietokantakaavio](/documentation/tietokantakaavio.png)
+* [Käyttötapaukset](/documentation/user_stories.md)
