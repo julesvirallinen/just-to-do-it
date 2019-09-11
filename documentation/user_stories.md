@@ -1,13 +1,14 @@
-Käyttäjänä voin luoda tilin
+As a user I can create an account 
 
-Käyttäjänä voin lisätä uusia tehtäviä
+As a user I can add new tasks 
+As a user I can set tasks as done
 
-Käyttäjänä voin asettaa tehtävälle muita tehtäviä mitä minun pitää tehdä ensin.
+As a user I can set prerequisite tasks for tasks. 
 
-Käyttäjänä voin asettaa deadlinen tehtävälle
+As a user I can set a deadline for a task
+As a user I can set a date that I cannot do the task before. 
 
-Käyttäjänä voin asettaa päivämäärän jota ennen tehtävää ei voi tehdä tehtävälle. 
+As a user I can see all tasks 
+As a user I can see all tasks that I'm able to do right away
 
-Käyttäjänä voin selata tehtäviä mitä pystyn tekemään nyt
-
-Käyttäjänä voin muokata tehtäviä
+As a user I can modify tasks

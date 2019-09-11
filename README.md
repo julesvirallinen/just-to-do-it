@@ -1,13 +1,13 @@
-# Yksinkertainen TO-DO verkkosovellus
+# TO-DO webapp
 
-Yksinkertainen TO-DO sovellus, jossa tehtävälle voi asettaa päivämääriä joita ennen tehtävää ei voi tehdä, tehtäviä jotka pitää tehdä ensin, sekä deadlineja. Näin sovellus näyttää aina prioriteettijärjestyksessä pelkästään ne tehtävät mitkä käyttäjä pystyy tekemään.
+A simple to-do web-app, where the user can set prerequisite tasks when adding tasks, as well as dates that the task cannot be done before. This way, the user can see everything they must do, but only see the tasks that they are able to do at any given moment. 
 
-Tehtävä voi luoda kategorioita ja liittää tehtävät niihin. Tehtävät ovat pääosin yhdellä sivulla, mutta käyttäjä voi halutessaan filtteröidä tehtävät yhden tai useamman kategorian tai esimerkiksi deadlinen mukaan.
+A task can be added to a category. Tasks are primarily on one page, but the user can filter tasks by one or more filters, or by deadline.
 
-Tämä on porttaus excel-to-do listastani. 
+This is a port of my excel to-do app. 
 
-[Sovelluksen Heroku](https://just-to-do-it.herokuapp.com/)
+[Heroku](https://just-to-do-it.herokuapp.com/)
 
 ## Dokumentaatio
-* [Tietokantakaavio](/documentation/tietokantakaavio.png)
-* [Käyttötapaukset](/documentation/user_stories.md)
+* [Relational diagram](/documentation/tietokantakaavio.png)
+* [User stories](/documentation/user_stories.md)
