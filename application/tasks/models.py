@@ -8,10 +8,12 @@ class Task(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(144), nullable=True)
+    # deadline = db.column(db.DateTime)
 
     done = db.Column(db.Boolean, nullable=False)
 
     def __init__(self, name, description):
         self.name = name
         self.description = description
+        # self.deadline = deadline
         self.done = False
