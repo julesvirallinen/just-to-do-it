@@ -2,9 +2,23 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_create') }}">
-  <input type="text" name="name" placeholder="Task name"/>
-  <input type="text" name="description" placeholder="Task description"/>
+
+  {{ form.name }}
+  {% for error in form.name.errors %}
+    {{ error }}
+  {% endfor %}
+  <br />
+  {{ form.description }}
+  {% for error in form.description.errors %}
+    {{ error }}
+  {% endfor %}
+  <br />
+  <!-- {{ form.deadline }}
+  {% for error in form.deadline.errors %}
+    {{ error }}
+  {% endfor %} -->
+  <br />
   <!-- <input type="date" name="deadline" placeholder="Deadline"/> -->
-  <input type="submit" value="Add a new task"/>
+  <input type="submit" value="Add a new task" />
 </form>
 {% endblock %}

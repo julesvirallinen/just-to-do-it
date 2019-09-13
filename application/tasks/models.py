@@ -15,5 +15,5 @@ class Task(db.Model):
     def __init__(self, name, description):
         self.name = name
         self.description = description
-        # self.deadline = deadline
+        # self.deadline = False
         self.done = False
