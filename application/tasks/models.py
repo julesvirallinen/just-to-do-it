@@ -8,12 +8,15 @@ class Task(db.Model):
 
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(144), nullable=True)
-    # deadline = db.column(db.DateTime)
+    deadline = db.Column(db.DateTime)
 
     done = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, name, description):
+    def __init__(self, name, description, deadline):
         self.name = name
         self.description = description
-        # self.deadline = False
+        self.deadline = deadline
         self.done = False
+
+    def __repr__(self):
+        return '<%r %r %r>' % (self.name, self.bday, self.notify)

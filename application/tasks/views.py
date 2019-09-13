@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from application import app, db
 from flask import redirect, render_template, request, url_for
 
@@ -8,6 +10,7 @@ from application.tasks.forms import TaskForm
 @app.route("/tasks", methods=["GET"])
 def tasks_index():
     return render_template("tasks/list.html", tasks = Task.query.all())
+
 
 @app.route("/task/<task_id>", methods=["GET"])
 def get_task(task_id):
@@ -37,9 +40,9 @@ def tasks_create():
 
     if not form.validate():
         return render_template("tasks/new.html", form = form)
-
-    t = Task(form.name.data, form.description.data)
-    # t.deadline = form.deadline.data
+    dl = form.deadline.data
+    t = Task(form.name.data, form.description.data, dl)
+    # t.deadline =
 
     db.session().add(t)
     db.session().commit()
