@@ -3,22 +3,8 @@
 {% block body %}
 <form method="POST" action="{{ url_for('tasks_create') }}">
 
-  {{ form.name }}
-  {% for error in form.name.errors %}
-    {{ error }}
-  {% endfor %}
-  <br />
-  {{ form.description }}
-  {% for error in form.description.errors %}
-    {{ error }}
-  {% endfor %}
-  <br />
-  {{ form.deadline }}
-  {% for error in form.deadline.errors %}
-    {{ error }}
-  {% endfor %}
-  <br />
-  <!-- <input type="date" name="deadline" placeholder="Deadline"/> -->
+  {% include 'tasks/form.html' %}
+
   <input type="submit" value="Add a new task" />
 </form>
 {% endblock %}

@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import redirect, render_template, request, url_for
+from flask import redirect, render_template, request, url_for, flash
 from flask_login import login_required, current_user
 
 
@@ -47,6 +47,7 @@ def tasks_create():
 
     if not form.validate():
         return render_template("tasks/new.html", form = form)
+
     dl = form.deadline.data
     t = Task(form.name.data, form.description.data, dl)
     t.account_id = current_user.id
@@ -57,3 +58,23 @@ def tasks_create():
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
+
+@app.route('/task/edit/<task_id>', methods=['GET', 'POST'])
+def edit(task_id):
+
+    task = Task.query.get(task_id)
+
+    if task:
+        form = TaskForm(formdata=request.form, obj=task)
+        if request.method == 'POST' and form.validate():
+            task.deadline = form.deadline.data
+            task.name = form.name.data
+            task.description = form.description.data
+            db.session().commit()
+            flash('Task updated successfully')
+
+            return redirect('/tasks')
+
+        return render_template('tasks/edit.html', form=form)
+    else:
+        return 'Error loading #{task_id}'.format(id=id)
