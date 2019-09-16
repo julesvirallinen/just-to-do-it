@@ -10,11 +10,11 @@
 
     {% if current_user.is_authenticated %}
       <p>
-        Logged in as <b>{{ current_user.username }}</b>. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+        Logged in as <b>{{ current_user.username }}</b>. <a href="{{ url_for('auth_logout') }}">Log out</a>
       </p>
     {% else %}
-      <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
-      <a href="{{ url_for('new_user') }}">Rekisteröidy</a>
+      <a href="{{ url_for('auth_login') }}">Sign in</a>
+      <a href="{{ url_for('new_user') }}">Sign up</a>
 
     {% endif %}
 
