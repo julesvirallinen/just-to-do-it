@@ -9,6 +9,10 @@ class TaskForm(FlaskForm):
     name = StringField("Task name", [validators.Length(min=2)], render_kw={"placeholder": "Task name"})
     description = TextAreaField("Description", render_kw={"placeholder": "Description"})
     deadline = DateField(
+        "Deadline",
+        format='%Y-%m-%d',
+
+        default=datetime.today,
         validators=[DateRange(min=date.today())]
     )
 
