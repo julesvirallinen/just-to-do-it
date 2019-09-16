@@ -1,15 +1,24 @@
-{{ form.name }}
+<br/>
+<div class="form-group">
+  {{ form.name(class_="form-control") }}
+</div>
 {% for error in form.name.errors %}
-  {{ error }}
+  <div class="alert alert-danger">{{ error }}</div>
 {% endfor %}
-<br />
-{{ form.description }}
+
+<div class="form-group">
+  {{ form.description(class_="form-control") }}
+</div>
 {% for error in form.description.errors %}
-  {{ error }}
+  <div class="alert alert-danger">{{ error }}</div>
 {% endfor %}
-<br />
-{{ form.deadline }}
+
+<div class="form-group row">
+  {{ form.deadline.label(class_="col-sm-1 col-form-label")}}
+  <div class="col-sm-11">
+    {{ form.deadline(class_="form-control") }}
+  </div>
+</div>
 {% for error in form.deadline.errors %}
-  {{ error }}
+  <div class="alert alert-danger">{{ error }}</div>
 {% endfor %}
-<br />

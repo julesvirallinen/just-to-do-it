@@ -19,6 +19,8 @@ from application.tasks import views
 
 from application.auth import models
 from application.auth import views
+from .util import filters
+
 
 # login functionality
 from application.auth.models import User
