@@ -12,7 +12,10 @@ from application.tasks.forms import TaskForm
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
-    return render_template("tasks/list.html", tasks = Task.query.all())
+    undone = Task.query.filter_by(done=False).all()
+    done = Task.query.filter_by(done=True).all()
+    
+    return render_template("tasks/index.html", undone = undone, done = done)
 
 
 @app.route("/task/<task_id>", methods=["GET"])

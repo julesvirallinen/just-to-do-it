@@ -1,16 +1,13 @@
-{% extends "layout.html" %}
-
-{% block body %}
-  <ul class="list-group">
-    {% for task in tasks %}
-      <li class="list-group-item {% if task.done %}list-group-item-success{% endif %}">
-        <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
-
-          <a href="/task/{{task.id}}">{{ task.name }}</a>
-          {{ task.deadline|humanise }}
-          <input type="submit" value="{% if task.done %}☑{% else %}◻{% endif %}  "/>
-        </form>
-      </li>
-    {% endfor %}
-  </ul>
-{% endblock %}
+<ul class="list-group">
+        {% for task in tasks %}
+          <li class="list-group-item {{ task | style_task }}">
+            <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
+    
+              <a href="/task/{{task.id}}">{{ task.name }}</a>
+              {{ task.deadline|humanise }}
+              <input type="submit" value="{% if task.done %}☑{% else %}◻{% endif %}  "/>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    

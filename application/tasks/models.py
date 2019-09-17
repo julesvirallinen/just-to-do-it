@@ -21,5 +21,5 @@ class Task(Base):
         self.deadline = deadline
         self.done = False
 
-    def __repr__(self):
-        return '<%r %r %r>' % (self.name, self.bday, self.notify)
+    # def __repr__(self):
+    #     return '<%r %r %r>' % ()

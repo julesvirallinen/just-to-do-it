@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  {% with tasks=undone %}
+    {% include "tasks/list.html" %}
+  {% endwith %}
+  <br />
+  {% with tasks=done %}
+    {% include "tasks/list.html" %}
+  {% endwith %}
+
+  <br/>
+  <a href="/tasks/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add task</a>
+
+{% endblock %}
