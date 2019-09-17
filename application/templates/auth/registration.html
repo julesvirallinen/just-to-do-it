@@ -6,29 +6,9 @@
 <div class="alert alert-warning">
   {{ error }}
 </div>
-<form method="POST" action="{{ url_for('new_user') }}">
-
-  <table>
-    <tr>
-      <td>
-	{{ form.username.label }}
-      </td>
-      <td>
-	{{ form.username }}
-      </td>
-    </tr>
-    <tr>
-      <td>
-	{{ form.password.label }}
-      </td>
-      <td>
-	{{ form.password }}
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-	<input type="submit" value="Login"/>
-      </td>
-    </tr>
+<form method="POST" class="auth-form" action="{{ url_for('new_user') }}">
+  {% with submit="Register" %}
+    {% include "auth/_form.html" %}
+  {% endwith %}
 </form>
 {% endblock %}

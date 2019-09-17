@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <td>
+      {{ form.username.label }}
+    </td>
+    <td>
+      <div class="form-group">
+        {{ form.username(class_="form-control") }}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      {{ form.password.label }}
+    </td>
+    <td>
+      <div class="form-group">
+        {{ form.password(class_="form-control") }}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+
+      <input class="btn btn-primary mb-2" type="submit" value="{{ submit }}" />
+    </td>
+  </tr>
+</table>

@@ -2,11 +2,11 @@
 
 {% block body %}
   {% with tasks=undone %}
-    {% include "tasks/list.html" %}
+    {% include "tasks/_list.html" %}
   {% endwith %}
   <br />
   {% with tasks=done %}
-    {% include "tasks/list.html" %}
+    {% include "tasks/_list.html" %}
   {% endwith %}
 
   <br/>

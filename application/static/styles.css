@@ -5,3 +5,7 @@ main {
 .task-form {
     width: 60%;
 }
+
+.auth-form {
+    width: 40%;
+}
