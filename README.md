@@ -7,6 +7,7 @@ A task can be added to a category. Tasks are primarily on one page, but the user
 This is a port of my excel to-do app. 
 
 [Heroku](https://just-to-do-it.herokuapp.com/)
+Test login: user/pass
 
 ## Dokumentaatio
 * [Relational diagram](/documentation/tietokantakaavio.png)
