@@ -6,12 +6,14 @@ from flask_login import login_required, current_user
 
 from application import app, db
 from application.tasks.models import Task
+from application.categories.models import Category
 from application.tasks.forms import TaskForm
 
 
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
+    categories = Category.query.all()
     if request.args.get('category'):
         cat = request.args.get('category')
         if cat == "none":
@@ -25,7 +27,8 @@ def tasks_index():
         done = Task.query.filter_by(done=True).all()
 
     
-    return render_template("tasks/index.html", undone = undone, done = done)
+    return render_template("tasks/index.html", undone = undone, done = done,
+                           categories = categories)
 
 
 @app.route("/task/<task_id>", methods=["GET"])
