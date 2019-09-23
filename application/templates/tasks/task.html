@@ -7,6 +7,8 @@
   <br />
   {{ task.deadline }}
   <br/>
+  {{ task.category }}
+  <br />
   <td><a href="/task/edit/{{task.id}}">Edit task</a></td>
 
   <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">

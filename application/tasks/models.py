@@ -13,6 +13,9 @@ class Task(Base):
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
+    
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'),
+                            nullable=True)
 
 
     def __init__(self, name, description, deadline):
@@ -23,3 +26,5 @@ class Task(Base):
 
     # def __repr__(self):
     #     return '<%r %r %r>' % ()
+
+    

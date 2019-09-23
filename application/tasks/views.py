@@ -12,8 +12,18 @@ from application.tasks.forms import TaskForm
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
-    undone = Task.query.filter_by(done=False).all()
-    done = Task.query.filter_by(done=True).all()
+    if request.args.get('category'):
+        cat = request.args.get('category')
+        if cat == "none":
+            cat = None
+        undone = Task.query.filter_by(done=False, category_id=cat).all()
+        done = Task.query.filter_by(done=True, category_id=cat).all()
+
+    else: 
+        
+        undone = Task.query.filter_by(done=False).all()
+        done = Task.query.filter_by(done=True).all()
+
     
     return render_template("tasks/index.html", undone = undone, done = done)
 
@@ -52,10 +62,12 @@ def tasks_create():
         return render_template("tasks/new.html", form = form)
 
     dl = form.deadline.data
+    
     t = Task(form.name.data, form.description.data, dl)
     t.account_id = current_user.id
+    if(form.category.data):
+        t.category_id = form.category.data.id
 
-    # t.deadline =
 
     db.session().add(t)
     db.session().commit()
@@ -73,6 +85,9 @@ def edit(task_id):
             task.deadline = form.deadline.data
             task.name = form.name.data
             task.description = form.description.data
+            if form.category.data:
+                task.category_id = form.category.data.id
+            
             db.session().commit()
             flash('Task updated successfully')
 

@@ -21,6 +21,10 @@ from application.auth import models
 from application.auth import views
 from .util import filters
 
+from application.categories import models
+from application.categories import views
+
+
 
 # login functionality
 from application.auth.models import User

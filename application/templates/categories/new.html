@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('categories_create') }}">
+  {% with submit="Submit" %}
+    {% include 'categories/_form.html' %}
+  {% endwith %}
+</form>
+{% endblock %}

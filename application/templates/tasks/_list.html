@@ -8,6 +8,7 @@
 
       <a href="/task/{{task.id}}">{{ task.name }}</a>
       {{ task.deadline|humanise }}
+      <span class="badge badge-dark">{{ task.category }}</span>
       
     </form>
   </li>
