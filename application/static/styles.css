@@ -10,7 +10,7 @@ main {
     width: 40%;
 }
 
-
+/* DONE BUTTONS */
 
 input.done-button {
     background-color: white;
@@ -24,16 +24,21 @@ input.done-button {
     color:white;
 }
 
-.done-button-False:hover {
+.done-button-0:hover {
     color:gray;
 }
 
 
 
-input.done-button-True {
+input.done-button-1 {
     /* padding-right: 0.3em; */
     color:black;
 }
+
+.list-task-done:first-child, :not(.list-task-done) + .list-task-done{ 
+    margin-top:30px; 
+}
+
 
 
 .categories {

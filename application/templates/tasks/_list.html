@@ -1,6 +1,6 @@
 <ul class="list-group">
   {% for task in tasks %}
-  <li class="list-group-item {{ task | style_task }}">
+  <li class="list-group-item  {{ task.done | style_task }}">
     <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
 
       <input class="done-button done-button-{{task.done}}" type="submit"

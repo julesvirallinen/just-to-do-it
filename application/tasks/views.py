@@ -28,7 +28,8 @@ def tasks_index():
 
     
     return render_template("tasks/index.html", undone = undone, done = done,
-                           categories = categories)
+                           categories = categories,
+                           tasks = Task.find_tasks())
 
 
 @app.route("/task/<task_id>", methods=["GET"])

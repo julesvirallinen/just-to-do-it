@@ -12,11 +12,11 @@
   </div>
 
 
-  {% with tasks=undone %}
+  <!-- {% with tasks=undone %}
     {% include "tasks/_list.html" %}
   {% endwith %}
-  <br />
-  {% with tasks=done %}
+  <br /> -->
+  {% with tasks=tasks %}
     {% include "tasks/_list.html" %}
   {% endwith %}
 
