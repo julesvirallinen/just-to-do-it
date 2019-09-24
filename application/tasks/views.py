@@ -99,3 +99,18 @@ def edit(task_id):
         return render_template('tasks/edit.html', form=form)
     else:
         return 'Error loading #{task_id}'.format(id=id)
+
+@app.route('/task/del/<task_id>', methods=['POST'])
+def remove_task(task_id):
+
+    task = Task.query.get(task_id)
+
+    if task:
+            db.session().delete(task)
+            db.session().commit()
+            flash('Task removed successfully')
+
+            return redirect('/tasks')
+
+    else:
+        return 'Error removing #{task_id}'.format(id=id)

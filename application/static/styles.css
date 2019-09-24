@@ -24,13 +24,13 @@ input.done-button {
     color:white;
 }
 
-.done-button-undone:hover {
+.done-button-False:hover {
     color:gray;
 }
 
 
 
-input.done-button-done {
+input.done-button-True {
     /* padding-right: 0.3em; */
     color:black;
 }
@@ -38,4 +38,8 @@ input.done-button-done {
 
 .categories {
     margin-bottom: 20px;
+}
+
+.badge-None {
+    background-color: gray;
 }

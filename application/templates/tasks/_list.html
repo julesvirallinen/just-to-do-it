@@ -3,12 +3,12 @@
   <li class="list-group-item {{ task | style_task }}">
     <form method="POST" action="{{ url_for('tasks_set_done', task_id=task.id) }}">
 
-      <input class="done-button done-button-{% if task.done %}done{% else %}undone{% endif %}" type="submit"
+      <input class="done-button done-button-{{task.done}}" type="submit"
         value="✔" />
 
       <a href="/task/{{task.id}}">{{ task.name }}</a>
       {{ task.deadline|humanise }}
-      <span class="badge badge-dark">{{ task.category }}</span>
+      <span class="badge badge-info badge-{{task.category}}">{{ task.category }}</span>
       
     </form>
   </li>
