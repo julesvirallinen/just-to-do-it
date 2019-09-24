@@ -3,7 +3,7 @@ from application import db
 from application.models import Base
 
 from sqlalchemy.sql import text
-1
+from datetime import datetime, date
 
 
 class Task(Base):
@@ -30,18 +30,20 @@ class Task(Base):
     #     return '<%r %r %r>' % ()
 
     @staticmethod
-    def find_tasks():
-        stmt = text("SELECT Task.id, Task.name, Task.deadline, Task.category_id, Task.done FROM Task"
+    def count_overdue():
+        stmt = text("SELECT COUNT(Task.id) FROM Task"
                     " LEFT JOIN Account ON Task.account_id = Account.id"
-                    " WHERE Task.Category_id > 0"
-                    " ORDER BY Task.done"
-                    )
+                    " WHERE Task.deadline < :today"
+                    " AND Task.done = 0"
+                    
+                    ).params(today=datetime.today())
         res = db.engine.execute(stmt)
-
+        print(res)
         response = []
         for row in res:
             response.append(
-                {"id": row[0], "name": row[1], "deadline": row[2], "category": row[3], "done": row[4]})
+                row[0])
+        print(response)
 
         return response
 

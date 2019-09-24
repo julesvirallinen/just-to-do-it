@@ -2,6 +2,7 @@
 
 {% block body %}
 
+
   <div class="btn-group categories" role="group" aria-label="Basic example">
     <a class="btn btn-secondary" href="?category=none" role="button">No category</a>
     {% for category in categories %}
@@ -10,6 +11,7 @@
     {% endfor %}
     <a class="btn btn-secondary" href="?" role="button">All</a>
   </div>
+  <div class="alert alert-primary" role="alert">Tasks overdue: {{ overdue }}</div>
 
 
   <!-- {% with tasks=undone %}

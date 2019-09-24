@@ -24,18 +24,18 @@ input.done-button {
     color:white;
 }
 
-.done-button-0:hover {
+.done-button-False:hover {
     color:gray;
 }
 
 
 
-input.done-button-1 {
+input.done-button-True {
     /* padding-right: 0.3em; */
     color:black;
 }
 
-.list-task-done:first-child, :not(.list-task-done) + .list-task-done{ 
+.list-task-True:first-child, :not(.list-task-True) + .list-task-True{ 
     margin-top:30px; 
 }
 
