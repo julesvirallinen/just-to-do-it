@@ -33,8 +33,8 @@ class Task(Base):
     def count_overdue():
         stmt = text("SELECT COUNT(Task.id) FROM Task"
                     " LEFT JOIN Account ON Task.account_id = Account.id"
-                    " WHERE Task.deadline < :today"
-                    " AND Task.done = 0"
+                    " WHERE (Task.deadline < to_date(cast(:today as TEXT),'YYYY-MM-DD'))"
+                    " AND Task.done = FALSE"
                     
                     ).params(today=datetime.today())
         res = db.engine.execute(stmt)
