@@ -13,23 +13,23 @@ from application.tasks.forms import TaskForm
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
+    
     categories = Category.query.all()
     if request.args.get('category'):
         cat = request.args.get('category')
         if cat == "none":
             cat = None
-        undone = Task.query.filter_by(done=False, category_id=cat).all()
-        done = Task.query.filter_by(done=True, category_id=cat).all()
+        tasks = Task.query.filter_by(account_id = current_user.id, category_id=cat).order_by(Task.done).all()
 
     else: 
         
-        undone = Task.query.filter_by(done=False).all()
-        done = Task.query.filter_by(done=True).all()
+        tasks = Task.query.filter_by(account_id = current_user.id).order_by(Task.done).all()
 
-    
-    return render_template("tasks/index.html", undone = undone, done = done,
+
+    overdue = Task.count_overdue()[0]
+    return render_template("tasks/index.html", tasks = tasks,
                            categories = categories,
-                           tasks = Task.find_tasks())
+                           overdue = overdue)
 
 
 @app.route("/task/<task_id>", methods=["GET"])
