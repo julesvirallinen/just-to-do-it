@@ -11,6 +11,8 @@ class Task(Base):
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(144), nullable=True)
     deadline = db.Column(db.DateTime)
+    possible_after = db.Column(db.DateTime)
+
 
     done = db.Column(db.Boolean, nullable=False)
 
@@ -20,11 +22,12 @@ class Task(Base):
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'),
                             nullable=True)
 
-    def __init__(self, name, description, deadline):
+    def __init__(self, name, description, deadline, possible_after):
         self.name = name
         self.description = description
         self.deadline = deadline
         self.done = False
+        self.possible_after = possible_after
 
     # def __repr__(self):
     #     return '<%r %r %r>' % ()

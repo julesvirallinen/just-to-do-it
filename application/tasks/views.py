@@ -66,8 +66,8 @@ def tasks_create():
         return render_template("tasks/new.html", form = form)
 
     dl = form.deadline.data
-    
-    t = Task(form.name.data, form.description.data, dl)
+    pa = form.possible_after.data
+    t = Task(form.name.data, form.description.data, dl, pa)
     t.account_id = current_user.id
     if(form.category.data):
         t.category_id = form.category.data.id
@@ -87,6 +87,8 @@ def edit(task_id):
         form = TaskForm(formdata=request.form, obj=task)
         if request.method == 'POST' and form.validate():
             task.deadline = form.deadline.data
+            task.possible_after = form.possible_after.data
+
             task.name = form.name.data
             task.description = form.description.data
             if form.category.data:

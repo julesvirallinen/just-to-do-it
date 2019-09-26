@@ -10,7 +10,7 @@
   {{ form.description(class_="form-control") }}
 </div>
 {% for error in form.description.errors %}
-<div class="alert alert-danger">{{ error }}</div>
+  <div class="alert alert-danger">{{ error }}</div>
 {% endfor %}
 
 
@@ -20,13 +20,24 @@
     {{ form.deadline(class_="form-control") }}
   </div>
 </div>
-
+{% for error in form.deadline.errors %}
+  <div class="alert alert-danger">{{ error }}</div>
+{% endfor %}
+<div class="form-group row">
+    {{ form.possible_after.label(class_="col-sm-3 col-form-label")}}
+    <div class="col-sm-9">
+      {{ form.possible_after(class_="form-control") }}
+    </div>
+</div>
+{% for error in form.possible_after.errors %}
+  <div class="alert alert-danger">{{ error }}</div>
+{% endfor %}
 <div class="form-group row">
   {{ form.category.label(class_="col-sm-3 col-form-label")}}
   <div class="col-sm-9">
     {{ form.category(class_="form-control") }}
   </div>
 </div>
-{% for error in form.deadline.errors %}
+{% for error in form.category.errors %}
 <div class="alert alert-danger">{{ error }}</div>
 {% endfor %}

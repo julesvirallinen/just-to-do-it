@@ -12,6 +12,11 @@ def year_ago():
     date = datetime.today() - relativedelta(years=1)
     return date.date
 
+def tomorrow():
+    date = datetime.today() + relativedelta(days=1)
+    return date.date
+
+
 
 class TaskForm(FlaskForm):
     name = StringField("Task name", [validators.Length(
@@ -25,6 +30,14 @@ class TaskForm(FlaskForm):
         default=datetime.today,
         validators=[validators.Optional(),DateRange(min=(year_ago()))]
     )
+    
+    possible_after = DateField(
+    "Cannot be done before",
+    format='%Y-%m-%d',
+    default="",
+    validators=[validators.Optional(),DateRange(min=tomorrow())]
+)
+
 
     category = QuerySelectField("Category",
                                 query_factory=lambda: Category.query.all(),
