@@ -10,6 +10,8 @@ main {
     width: 40%;
 }
 
+/* DONE BUTTONS */
+
 input.done-button {
     background-color: white;
     border-color: black;
