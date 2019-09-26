@@ -24,7 +24,7 @@ class Category(Base):
         stmt = text("SELECT c.name, COUNT(t.category_id) FROM Category c"
                     " LEFT JOIN Account a ON c.account_id = a.id"
                     " LEFT JOIN Task t ON c.id = t.category_id"
-                    " WHERE ( t.done = 0)"
+                    " WHERE ( t.done = FALSE)"
                     " GROUP BY c.name"
                     # " HAVING COUNT(Task.id) = 0"
                     )
@@ -36,7 +36,7 @@ class Category(Base):
         #APPENDS COUNT FOR NULL CATEGORIES
         stmt = text("SELECT COUNT(t.id) FROM Task t"
             " LEFT JOIN Account a ON t.account_id = a.id"
-            " WHERE (t.category_id IS NULL AND t.done = 0)"
+            " WHERE (t.category_id IS NULL AND t.done = FALSE)"
             )
         res = db.engine.execute(stmt)
         

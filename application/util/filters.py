@@ -17,3 +17,11 @@ def style_task(task):
     elif task.deadline < datetime.today():
         style = "list-group-item-danger"
     return style
+
+
+@app.template_filter()
+def style_overdue(n):
+    if n == 0:
+        return "success"
+    else:
+        return "danger"

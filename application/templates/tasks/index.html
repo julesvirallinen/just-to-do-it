@@ -9,9 +9,9 @@
 
       <a class="btn btn-secondary" href="?category={{category.id}}" role="button">{{category.name}}</a>
     {% endfor %}
-    <a class="btn btn-secondary" href="?" role="button">All</a>
+    <a class="btn btn-secondary" href="?" role="button">All
+    <span class="badge badge-pill badge-{{overdue | style_overdue }}">{{ overdue }}</span> </a>
   </div>
-  <div class="alert alert-primary" role="alert">Tasks overdue: {{ overdue }}</div>
 
 
   <!-- {% with tasks=undone %}
