@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <table>
+        {% if categories is defined %}
+
+            {% for category in categories %}
+                <tr>
+                    <td>{{category.name}} </td> <td>Tasks due: {{category.count}} </td>
+                    
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+{% endblock %}

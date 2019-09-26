@@ -31,3 +31,10 @@ def categories_create():
     db.session().commit()
 
     return redirect(url_for("tasks_index"))
+
+@app.route("/categories/")
+@login_required
+def category_list():
+    categories = Category.get_categories()
+    print(categories)
+    return render_template("categories/index.html", categories=categories)
