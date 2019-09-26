@@ -23,7 +23,7 @@ class TaskForm(FlaskForm):
         format='%Y-%m-%d',
 
         default=datetime.today,
-        validators=[DateRange(min=(year_ago()))]
+        validators=[validators.Optional(),DateRange(min=(year_ago()))]
     )
 
     category = QuerySelectField("Category",

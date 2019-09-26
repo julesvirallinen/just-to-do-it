@@ -5,18 +5,25 @@ from datetime import datetime, date
 
 
 @app.template_filter()
-def humanise(text):
-    
-    return arrow.get(text).humanize()
+def humanise(date):
+    if not date: return ""
+    return arrow.get(date).humanize()
 
 @app.template_filter()
 def style_task(task):
     style = ""
     if task.done:
         style = "list-group-item-success"
-    elif task.deadline < datetime.today():
-        style = "list-group-item-danger"
+    elif task.deadline and task.deadline < datetime.today():
+            style = "list-group-item-danger"
     return style
+
+@app.template_filter()
+def format_date(d):
+    if d:
+        return d.strftime('%Y-%m-%d')
+    else:
+        return "No deadline"
 
 
 @app.template_filter()

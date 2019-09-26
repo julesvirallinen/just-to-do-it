@@ -8,7 +8,7 @@
 
   </form>
   <i>{{ task.description }} </i>
-  {{ task.deadline.strftime('%Y-%m-%d') }}
+  {{ task.deadline | format_date }}
   <br/>
   <a class="btn btn-secondary mb-2" href="/task/edit/{{task.id}}">Edit task</a>
   <form method="POST" action="{{ url_for('remove_task', task_id=task.id) }}">  
