@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 class CategoryForm(FlaskForm):
     name = StringField("Category name", 
-                       [validators.Length(min=2)], 
+                       [validators.Length(min=2, max=50)], 
                        render_kw={"placeholder": "Category name"})
 
     class Meta:

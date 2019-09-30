@@ -20,7 +20,7 @@ def tomorrow():
 
 class TaskForm(FlaskForm):
     name = StringField("Task name", [validators.Length(
-        min=2)], render_kw={"placeholder": "Task name"})
+        min=2, max=50)], render_kw={"placeholder": "Task name"})
     description = TextAreaField("Description", render_kw={
                                 "placeholder": "Description"})
     deadline = DateField(
