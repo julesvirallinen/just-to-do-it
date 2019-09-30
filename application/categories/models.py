@@ -21,18 +21,18 @@ class Category(Base):
 
     @staticmethod
     def get_categories():
-        stmt = text("SELECT c.name, COUNT(t.category_id) FROM Category c"
+        stmt = text("SELECT c.name, COUNT(t.category_id), c.id FROM Category c"
                     " LEFT JOIN Account a ON c.account_id = a.id"
                     " LEFT JOIN Task t ON c.id = t.category_id"
-                    " WHERE ( t.done = FALSE)"
-                    " GROUP BY c.name"
-                    # " HAVING COUNT(Task.id) = 0"
+                    " AND (t.done = FALSE)"
+                    " GROUP BY c.name, c.id"
+                    
                     )
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"name": row[0], "count": row[1]})
+            response.append({"name": row[0], "count": row[1], "id": row[2]})
         #APPENDS COUNT FOR NULL CATEGORIES
         stmt = text("SELECT COUNT(t.id) FROM Task t"
             " LEFT JOIN Account a ON t.account_id = a.id"
@@ -41,5 +41,5 @@ class Category(Base):
         res = db.engine.execute(stmt)
         
         for row in res:
-            response.append({"name": "None", "count": row[0]})
+            response.append({"name": "None", "count": row[0], "id":"none"})
         return response
