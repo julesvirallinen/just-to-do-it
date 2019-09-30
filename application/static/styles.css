@@ -48,3 +48,8 @@ input.done-button-True {
 .badge-None {
     background-color: gray;
 }
+
+.delete-category {
+    font-size:70%;
+    padding: 2px;
+}

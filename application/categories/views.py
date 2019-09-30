@@ -38,3 +38,23 @@ def category_list():
     categories = Category.get_categories()
     print(categories)
     return render_template("categories/index.html", categories=categories)
+
+@app.route('/category/del/<category_id>', methods=['POST'])
+def remove_category(category_id):
+
+    category = Category.query.get(category_id)
+
+    if category:
+        for task in category.tasks:
+            task.category_id = None
+            db.session().commit()
+            
+        db.session().delete(category)
+        db.session().commit()
+        flash('Category removed successfully')
+
+        return redirect('/categories')
+
+    else:
+        return 'Error removing #{category_id}'.format(id=id)
+
