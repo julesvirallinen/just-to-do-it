@@ -39,7 +39,16 @@ input.done-button-True {
     margin-top:30px; 
 }
 
-
+li.list-group-item.disabled {
+    background-color: lightgray;
+}
+li.list-group-item.disabled > form > input {
+    background-color: lightgray;
+    color: lightgray;
+}
+li.list-group-item.disabled > form > a {
+    color: gray;
+}
 
 .categories {
     margin-bottom: 20px;

@@ -9,7 +9,7 @@
       <a href="/task/{{task.id}}">{{ task.name }}</a>
       {{ task.deadline|humanise }}
       <span class="badge badge-info badge-{{task.category}}">{{ task.category }}</span>
-      
+      <span class="badge badge-warning">{{ task.possible_after | format_possible }}</span>
     </form>
   </li>
   {% endfor %}

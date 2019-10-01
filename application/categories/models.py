@@ -1,4 +1,5 @@
 from application import db
+from datetime import datetime, date
 
 from application.models import Base
 from sqlalchemy.sql import text
@@ -25,9 +26,11 @@ class Category(Base):
                     " LEFT JOIN Account a ON c.account_id = a.id"
                     " LEFT JOIN Task t ON c.id = t.category_id"
                     " AND (t.done = FALSE)"
+                    " AND (t.possible_after IS NULL OR t.possible_after < to_date(cast(:today as TEXT),'YYYY-MM-DD'))" 
                     " GROUP BY c.name, c.id"
+                    " ORDER BY c.id"
                     
-                    )
+                    ).params(today=datetime.today())
         res = db.engine.execute(stmt)
 
         response = []

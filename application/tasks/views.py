@@ -14,7 +14,7 @@ from application.tasks.forms import TaskForm
 @login_required
 def tasks_index():
     
-    categories = Category.query.all()
+    categories = Category.get_categories()
     if request.args.get('category'):
         cat = request.args.get('category')
         if cat == "none":

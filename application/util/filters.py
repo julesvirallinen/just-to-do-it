@@ -16,6 +16,8 @@ def style_task(task):
         style = "list-group-item-success"
     elif task.deadline and task.deadline < datetime.today():
             style = "list-group-item-danger"
+    elif task.possible_after and task.possible_after > datetime.today():
+            style = "disabled"
     return style
 
 @app.template_filter()
@@ -32,3 +34,17 @@ def style_overdue(n):
         return "success"
     else:
         return "danger"
+    
+@app.template_filter()
+def format_possible(n):
+    if n and n > datetime.today():
+        return "Available " + arrow.get(n).humanize()
+    else:
+        return ""
+
+@app.template_filter()
+def count_all(cat):
+    sum = 0;
+    for c in cat:
+        sum += c['count']
+    return sum
