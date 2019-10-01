@@ -1,7 +1,8 @@
 from datetime import datetime
 
-from flask import redirect, render_template, request, url_for, flash
+from flask import redirect, render_template, request, url_for, flash, session
 from flask_login import login_required, current_user
+from sqlalchemy import desc, asc
 
 
 from application import app, db
@@ -15,18 +16,29 @@ from application.tasks.forms import TaskForm
 def tasks_index():
     
     categories = Category.get_categories()
-    if request.args.get('category'):
-        cat = request.args.get('category')
-        if cat == "none":
-            cat = None
-        tasks = Task.query.filter_by(account_id = current_user.id, category_id=cat).order_by(Task.done).all()
+    tasks = Task.query.filter_by(account_id = current_user.id)
 
-    else: 
-        
-        tasks = Task.query.filter_by(account_id = current_user.id).order_by(Task.done).all()
+    if 'category' not in session:
+        session['category'] = "all"
+
+    if request.args.get('category'):
+        session['category'] = request.args.get('category')
+    else: session['category'] = "all"
+
+
+
+    category = session['category']
+    
+    if category != "all":
+        if category == "none":
+            category = None
+        tasks = Task.query.filter_by(category_id=category)
+
+    tasks = tasks.order_by(Task.done, asc(Task.deadline)).all()        
 
 
     overdue = Task.count_overdue()[0]
+    
     return render_template("tasks/index.html", tasks = tasks,
                            categories = categories,
                            overdue = overdue)
@@ -55,7 +67,12 @@ def tasks_set_done(task_id):
 @app.route("/tasks/new/")
 @login_required
 def tasks_form():
-    return render_template("tasks/new.html", form = TaskForm())
+    cat = session['category']
+    form = TaskForm()    
+    if cat != "none" and cat != "all":
+        form.category.default = Category.query.get(cat)
+    form.process()
+    return render_template("tasks/new.html", form = form)
 
 @app.route("/tasks/", methods=["POST"])
 @login_required
