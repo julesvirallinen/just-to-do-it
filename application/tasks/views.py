@@ -14,7 +14,6 @@ from application.tasks.forms import TaskForm
 @app.route("/tasks", methods=["GET"])
 @login_required
 def tasks_index():
-    
     categories = Category.get_categories()
     tasks = Task.query.filter_by(account_id = current_user.id)
 
@@ -23,9 +22,6 @@ def tasks_index():
 
     if request.args.get('category'):
         session['category'] = request.args.get('category')
-    else: session['category'] = "all"
-
-
 
     category = session['category']
     

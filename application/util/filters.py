@@ -37,8 +37,6 @@ def style_overdue(n):
     
 @app.template_filter()
 def style_category(cat):
-    print(session['category'], cat)
-    print(str(cat) == str(session['category']))
     if str(cat) == str(session['category']):
         return "active"
     return ""
