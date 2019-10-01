@@ -40,9 +40,11 @@ class Category(Base):
         stmt = text("SELECT COUNT(t.id) FROM Task t"
             " LEFT JOIN Account a ON t.account_id = a.id"
             " WHERE (t.category_id IS NULL AND t.done = FALSE)"
-            )
+            " AND (t.possible_after IS NULL OR t.possible_after < to_date(cast(:today as TEXT),'YYYY-MM-DD'))" 
+
+            ).params(today=datetime.today())
         res = db.engine.execute(stmt)
         
         for row in res:
-            response.append({"name": "None", "count": row[0], "id":"none"})
+            response.append({"name": "No category", "count": row[0], "id":"none"})
         return response

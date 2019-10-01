@@ -40,11 +40,11 @@ input.done-button-True {
 }
 
 li.list-group-item.disabled {
-    background-color: lightgray;
+    background-color: #d3d3d338;
 }
 li.list-group-item.disabled > form > input {
-    background-color: lightgray;
-    color: lightgray;
+    background-color: #d3d3d338;
+    color: transparent;
 }
 li.list-group-item.disabled > form > a {
     color: gray;
