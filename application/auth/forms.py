@@ -12,7 +12,7 @@ class UserForm(FlaskForm):
     username = StringField("Username",
         [validators.Length(min=2, max=50)])
     password = PasswordField("Password",
-        [validators.Length(min=10, max=50)])
+        [validators.Length(min=4, max=50)])
 
 
     class Meta:

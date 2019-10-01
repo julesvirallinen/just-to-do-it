@@ -3,9 +3,7 @@
 {% block body %}
 <h1>Create an account</h1>
 <p> Warning: passwords are saved as plaintext. Don't use a real password from any service </p>
-<div class="alert alert-warning">
-  {{ error }}
-</div>
+
 <form method="POST" class="auth-form" action="{{ url_for('new_user') }}">
   {% with submit="Register" %}
     {% include "auth/_form.html" %}

@@ -32,7 +32,8 @@ def new_user():
     form = UserForm(request.form)
 
     if not form.validate():
-        return render_template("/auth/registration.html", form = form)
+        return render_template("/auth/registration.html", form = form,
+                               error = "Username must be between 2 and 50 characters and password must be between 4 and 50 characters.")
 
     u = User(form.username.data, form.password.data)
     if User.query.filter_by(username=form.username.data).first():

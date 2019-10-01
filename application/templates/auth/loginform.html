@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 
 {% block body %}
-{{ error }}
 <form method="POST" class="auth-form" action="{{ url_for('auth_login') }}">
   {% with submit="Login" %}
     {% include "auth/_form.html" %}
