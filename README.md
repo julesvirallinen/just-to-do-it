@@ -40,3 +40,15 @@ In pgAdmin, create a local database server with
 5. Start server with `python run.py`
 
 The app should now be running on localhost:5000
+
+
+### Usage
+
+Create an account from the register button on the navbar. 
+
+Add categories for tasks from "Add category". 
+
+Add tasks by pressing "Add task". 
+"Cannot be done before" indicates the first possible date to do a task. 
+
+Press Category names on front page to filter tasks by category. 
