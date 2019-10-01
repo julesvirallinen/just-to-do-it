@@ -1,7 +1,7 @@
 from application import app
 import arrow
 from datetime import datetime, date
-
+from flask import session
 
 
 @app.template_filter()
@@ -33,7 +33,15 @@ def style_overdue(n):
     if n == 0:
         return "success"
     else:
-        return "danger"
+        return "info"
+    
+@app.template_filter()
+def style_category(cat):
+    print(session['category'], cat)
+    print(str(cat) == str(session['category']))
+    if str(cat) == str(session['category']):
+        return "active"
+    return ""
     
 @app.template_filter()
 def format_possible(n):
