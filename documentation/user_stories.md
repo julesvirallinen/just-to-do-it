@@ -58,7 +58,7 @@ WHERE task.id = PARAM:task_id
 ```
 
 As a user I can set prerequisite tasks for tasks. 
-`TODO`
+`not in app`
 
 As a user I can see all tasks 
 ```

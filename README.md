@@ -8,8 +8,10 @@ This is a port of my excel to-do app.
 Test login: user/pass
 
 ## Documentation
-* [Relational diagram](/documentation/tietokantakaavio.png)
+* [Full relational diagram](/documentation/tietokantakaavio.png)
+* [Current relational diagram](/documentation/tietokantakaavio (2).png)
 * [User stories](/documentation/user_stories.md)
+* [Create tables](/documentation/create_tables.md)
 
 ### Installation 
 
