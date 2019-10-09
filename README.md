@@ -1,8 +1,6 @@
 # TO-DO webapp
 
-A simple to-do web-app, where the user can set prerequisite tasks when adding tasks, as well as dates that the task cannot be done before. This way, the user can see everything they must do, but only see the tasks that they are able to do at any given moment. 
-
-A task can be added to a category. Tasks are primarily on one page, but the user can filter tasks by one or more filters, or by deadline.
+A simple to-do app with category filtering, deadlines, do after-dates and simple interface. Tasks are saved by user account.
 
 This is a port of my excel to-do app. 
 
@@ -41,14 +39,31 @@ In pgAdmin, create a local database server with
 
 The app should now be running on localhost:5000
 
+#### Deploying to Heroku 
+
+This assumes you have `heroku-cli` installed and logged in. 
+
+1. Create `procfile` for Heroku. `echo "web: gunicorn --preload --workers 1 application:app" > Procfile`
+2. If you added any packages run `pip freeze | grep -v pkg-resources > requirements.txt` to inform Heroku of packages. 
+3. Create Heroku app `heroku apps:create NAME` This will also create git remote
+4. Add heroku to local git `git remote add heroku https://git.heroku.com/NAME.git`
+5. Push to heroku with `git push heroku master`
 
 ### Usage
 
-Create an account from the register button on the navbar. 
+#### Accounts
+You cannot do anything in the app without logging in. Create an account from the button in the top right corner. The browser will remember your login until you logout. 
 
-Add categories for tasks from "Add category". 
+#### Basic features
 
-Add tasks by pressing "Add task". 
+Add categories for tasks from "Add category". Delete categories from the category page. 
+
+Add tasks by pressing "Add task". Delete or edit tasks by clicking on the task on the task list.
 "Cannot be done before" indicates the first possible date to do a task. 
 
-Press Category names on front page to filter tasks by category. 
+Press Category names on front page to filter tasks by category. If you add a task while filtering by category the task will have that category as default. 
+
+When adding tasks, by adding a "Cannot be done before" -date the task will appear grayed out until it can be done. 
+
+### Missing features
+- Prerequisite-tasks - tasks that must be done before a task can be done. 
