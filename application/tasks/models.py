@@ -29,14 +29,10 @@ class Task(Base):
         self.done = False
         self.possible_after = possible_after
 
-    # def __repr__(self):
-    #     return '<%r %r %r>' % ()
-
     @staticmethod
     def count_overdue():
         stmt = text("SELECT COUNT(Task.id) FROM Task"
                     " LEFT JOIN Account ON Task.account_id = Account.id"
-                    # " WHERE (Task.deadline < to_date(cast(:today as TEXT),'YYYY-MM-DD'))"
                     " WHERE (Task.possible_after IS NULL OR Task.possible_after < to_date(cast(:today as TEXT),'YYYY-MM-DD'))" 
 
                     " AND Task.done = FALSE"
