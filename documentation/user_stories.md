@@ -90,6 +90,16 @@ SET category_id = NULL
 WHERE task.category_id = PARAM:category_id
 ```
 
+As a user I can edit a category
+```
+params: category_id, new_name
+
+UPDATE category
+SET category_name = PARAM:new_name
+WHERE category_id = PARAM:category_id
+```
+
+
 
 As a user I can filter tasks by category. 
 ```
