@@ -28,7 +28,9 @@ input.done-button {
     color:gray;
 }
 
-
+.btn-view-task {
+    font-size:80%;
+}
 
 input.done-button-True {
     /* padding-right: 0.3em; */
