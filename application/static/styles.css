@@ -39,6 +39,10 @@ input.done-button-True {
     margin-top:30px; 
 }
 
+.list-group-item, .list-group-item:hover{ z-index: auto; }
+
+
+
 li.list-group-item.disabled {
     background-color: #d3d3d338;
 }

@@ -10,7 +10,13 @@
       {{ task.deadline|humanise }}
       <span class="badge badge-info badge-{{task.category}}">{{ task.category }}</span>
       <span class="badge badge-warning">{{ task.possible_after | format_possible }}</span>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          View
+      </button> 
+      
     </form>
+    {% include "tasks/_task.html" %}
+
   </li>
   {% endfor %}
 </ul>
