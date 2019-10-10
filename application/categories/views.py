@@ -58,3 +58,19 @@ def remove_category(category_id):
     else:
         return 'Error removing #{category_id}'.format(id=id)
 
+@app.route('/category/edit/<category_id>', methods=['GET', 'POST'])
+def edit_category(category_id):
+
+    category = Category.query.get(category_id)
+
+    if category:
+        form = CategoryForm(formdata=request.form, obj=category)
+        if request.method == 'POST' and form.validate():
+            category.name = form.name.data
+            db.session().commit()
+            flash('Category updated successfully')
+            return redirect('/categories')
+
+        return render_template('categories/edit.html', form=form)
+    else:
+        return 'Error loading #{category_id}'.format(id=id)

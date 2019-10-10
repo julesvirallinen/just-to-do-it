@@ -7,7 +7,11 @@
             {% for category in categories %}
                 <tr>
                     <td><a href="../tasks?category={{category.id}}"> {{ category.name }} </a> </td> <td>Undone tasks: {{category.count}} </td>
+                    <form method="GET" action="{{ url_for('edit_category', category_id=category.id) }}">  
+                        <td>{% if category.id != "none" %}<input type="submit" value="Edit" class="btn  mb-2 delete-category" />{% endif %}</td>
+                    </form>
                     <form method="POST" action="{{ url_for('remove_category', category_id=category.id) }}">  
+                        
                         <td>{% if category.id != "none" %}<input type="submit" value="Delete" class="btn btn-danger mb-2 delete-category" />{% endif %}</td>
                       </form>
                 </tr>

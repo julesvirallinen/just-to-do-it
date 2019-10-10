@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" >
+
+  {% include 'categories/_form.html' %}
+
+    </tr>
+        <td colspan="2">
+            <input class="btn btn-primary mb-2" type="submit" value="Submit" />
+        </td>
+    </tr>
+</form>
+{% endblock %}

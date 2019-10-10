@@ -69,3 +69,4 @@ When adding tasks, by adding a "Cannot be done before" -date the task will appea
 
 ### Missing features
 - Prerequisite-tasks - tasks that must be done before a task can be done. 
+- edit category for two full CRUD
