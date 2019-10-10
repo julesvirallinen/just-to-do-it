@@ -28,7 +28,7 @@ def tasks_index():
     if category != "all":
         if category == "none":
             category = None
-        tasks = Task.query.filter_by(category_id=category)
+        tasks = tasks.filter_by(category_id=category)
 
     tasks = tasks.order_by(Task.done, asc(Task.deadline)).all()        
 
