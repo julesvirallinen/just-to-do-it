@@ -2,8 +2,9 @@
 
 {% block body %}
 
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 
-  <div class="btn-group categories" role="group" aria-label="Category list">
+  <div class="btn-group mr-2 categories" role="group" aria-label="Category list">
     {% for category in categories %}
       <a class="btn btn-secondary {{category.id | style_category}}" href="?category={{category.id}}" role="button">{{category.name}}
       <span class="badge badge-pill badge-{{category.count | style_overdue }}">{{ category.count }}</span> </a>
@@ -11,6 +12,11 @@
     <a class="btn btn-secondary {{'all' | style_category}}" href="/tasks?category=all" role="button">All
     <span class="badge badge-pill badge-{{overdue | style_overdue }}">{{ categories | count_all }}</span> </a>
   </div>
+  <div class="btn-group mr-2 categories" role="group" aria-label="New category">
+    <a href="/categories/new" class="btn btn-secondary">Add new</a>
+  </div>
+</div>
+
 
   {% with tasks=tasks %}
     {% include "tasks/_list.html" %}
