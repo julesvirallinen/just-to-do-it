@@ -40,11 +40,15 @@ def category_list():
     return render_template("categories/index.html", categories=categories)
 
 @app.route('/category/del/<category_id>', methods=['POST'])
+@login_required
 def remove_category(category_id):
 
     category = Category.query.get(category_id)
-
+    
+    
     if category:
+        if category.account_id != current_user.id:
+            return redirect('/categories')
         for task in category.tasks:
             task.category_id = None
             db.session().commit()
@@ -59,11 +63,15 @@ def remove_category(category_id):
         return 'Error removing #{category_id}'.format(id=id)
 
 @app.route('/category/edit/<category_id>', methods=['GET', 'POST'])
+@login_required
 def edit_category(category_id):
 
     category = Category.query.get(category_id)
+    
 
     if category:
+        if category.account_id != current_user.id:
+            return redirect('/categories')
         form = CategoryForm(formdata=request.form, obj=category)
         if request.method == 'POST' and form.validate():
             category.name = form.name.data

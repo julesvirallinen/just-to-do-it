@@ -97,6 +97,8 @@ def edit(task_id):
     task = Task.query.get(task_id)
 
     if task:
+        if task.account_id != current_user.id:
+            return redirect('/tasks')
         form = TaskForm(formdata=request.form, obj=task)
         if request.method == 'POST' and form.validate():
             task.deadline = form.deadline.data
@@ -122,11 +124,14 @@ def remove_task(task_id):
     task = Task.query.get(task_id)
 
     if task:
-            db.session().delete(task)
-            db.session().commit()
-            flash('Task removed successfully')
-
+        if task.account_id != current_user.id:
             return redirect('/tasks')
+
+        db.session().delete(task)
+        db.session().commit()
+        flash('Task removed successfully')
+
+        return redirect('/tasks')
 
     else:
         return 'Error removing #{task_id}'.format(id=id)
