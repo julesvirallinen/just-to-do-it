@@ -10,7 +10,7 @@ class User(Base):
     password = db.Column(db.String(144), nullable=False)
 
     tasks = db.relationship("Task", backref='account', lazy=True)
-
+    categories = db.relationship("Category", backref='account', lazy=True)
 
     def __init__(self, username, password):
         self.username = username
