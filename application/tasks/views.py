@@ -92,6 +92,7 @@ def tasks_create():
     return redirect(url_for("tasks_index"))
 
 @app.route('/task/edit/<task_id>', methods=['GET', 'POST'])
+@login_required
 def edit(task_id):
 
     task = Task.query.get(task_id)
@@ -119,6 +120,7 @@ def edit(task_id):
         return 'Error loading #{task_id}'.format(id=id)
 
 @app.route('/task/del/<task_id>', methods=['POST'])
+@login_required
 def remove_task(task_id):
 
     task = Task.query.get(task_id)
